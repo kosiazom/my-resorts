@@ -29,8 +29,14 @@ class NavBar extends Component {
                     </div>
 
                 </div>
-             <ul className={this.state.isOpen? "nav-links show-nav" : "nav-links"}>
-
+             <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}> 
+             {/* when clicked then the show-nav adds a height of 100px  then show links*/}
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/rooms">Rooms</Link>
+                </li>
              </ul>
             </nav>
         );

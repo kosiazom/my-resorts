@@ -1,9 +1,11 @@
 import React from 'react'
+import Hero from '../components/Hero'
 
 const Home = () => {
     return (
         <div>
-            Hello from Home page! Another one
+           <Hero/>
+           {/* defaultHero is found in the app.css */}
         </div>
     )
 }
