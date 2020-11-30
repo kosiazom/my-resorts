@@ -1,11 +1,15 @@
-import React from 'react'
 
-const SingleRoom = () => {
-    return (
-        <div>
-            Hello I am a single rooms page
-        </div>
-    )
+import React, { Component } from 'react';
+
+class SingleRoom extends Component {
+    render() {
+        return (
+            <div>
+                Single Room
+            </div>
+        );
+    }
 }
 
-export default SingleRoom
+export default SingleRoom;
+
