@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from 'prop-types';
+import SingleRoom from '../pages/SingleRoom'
 
 const Room = ({ room }) => {
  const {name, slug, images, price} = room
@@ -15,6 +16,7 @@ const Room = ({ room }) => {
            </div>
            <Link to={`/rooms/${slug}`} className="btn-primary room-link">
              Features
+         
            </Link>
            <p className="room-info">{name}</p>
           

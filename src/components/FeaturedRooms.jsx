@@ -23,8 +23,6 @@ class FeaturedRooms extends Component {
                     { loading ?  <Loading /> : rooms }
                 </div>
             
-        
-        
             </section>
         );
     }
