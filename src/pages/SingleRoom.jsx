@@ -7,6 +7,7 @@ class SingleRoom extends Component {
             <div>
                 Single Room
             </div>
+            
         );
     }
 }
