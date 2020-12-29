@@ -34,9 +34,9 @@ class RoomProvider extends Component {
             let images = item.fields.images.map(image => 
                 image.fields.file.url);
 
-            let rooms = {...item.fields, images, id}
+            let room = {...item.fields, images, id}
 
-            return rooms
+            return room
         })
         return tempItems
     }
