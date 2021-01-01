@@ -4,6 +4,7 @@ import Banner from '../components/Banner'
 import Services from '../components/Services'
 import FeaturedRooms  from '../components/FeaturedRooms'
 import { Link } from 'react-router-dom'
+import Button from '../components/StyledHero'
 
 //Parent to Banner & Hero ...props are being passed down
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
            </Hero>
                <Services />
                <FeaturedRooms />
+               <Button>I am a styled Buttone</Button>
            </>
            
         
