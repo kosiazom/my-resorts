@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import Banner from '../components/Banner'
 import { Link } from 'react-router-dom'
 import { RoomContext } from '../Context.jsx'
+import StyledHero from '../components/StyledHero'
 
 class SingleRoom extends Component {
     constructor(props) {
@@ -31,9 +32,20 @@ class SingleRoom extends Component {
                 </Link>
             </div>)
         }
-        const {name, description, capacity, size, price, extras, breakfast, pets, images} = room
+        const { name,
+             description, 
+             capacity, 
+             size, 
+             price, 
+             extras, 
+             breakfast, 
+             pets, 
+             images
+            } = room
+
        return (
-      <Hero hero='roomsHero'>
+      <StyledHero img={images[0] || defaultBcg}> 
+      
           
           <Banner title={`${name} room`}>
               <Link to='/rooms' className='btn-primary'>
@@ -41,9 +53,9 @@ class SingleRoom extends Component {
               </Link>
           </Banner>
           
-        </Hero>
+        </StyledHero>
        )
-
+//line 37 allows the image to be rendered dynamically
        
     }
 }
