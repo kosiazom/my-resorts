@@ -19,13 +19,14 @@ class RoomProvider extends Component {
        minPrice: 0,
        maxPrice: 0,
        maxSize: 0,
+       minSize:0,
        breakfast: false,
        pets: false
     };
     
     componentDidMount(){
         let rooms = this.formatData(items)
-        console.log(rooms)
+        console.log(rooms);
         let featuredRooms = rooms.filter(room => room.featured === true);
         let maxPrice = Math.max(...rooms.map(room =>
             room.price));
@@ -65,15 +66,55 @@ class RoomProvider extends Component {
     };
 
     handleChange = (e) => {
-        const type = e.target.type
-        const name = e.target.name
-        const value = e.target.value
+        const target = e.target;
+        
+        const value = e.type === 'checkbox' ? target.checked : target.value;
+        const name = e.target.name;
+
+        this.setState(
+            {
+            [name] : value
+            }, 
+            this.filterRooms )
+        // console.log(e.type)
        
-        console.log(type,name,value)
+        //console.log(`this is type: ${type}, name: ${name}, value:${value}`)
     };
 
     filterRooms = () => {
-        console.log("hello")
+        let {
+            rooms, 
+            type, 
+            capacity, 
+            price, 
+            minSize, 
+            maxSize, 
+            breakfast, 
+            pets
+        } = this.state
+    // all the rooms
+        let tempRooms = [...rooms];
+    // transform value
+        capacity = parseInt(capacity);
+        price = parseInt(price)
+
+    // filter by type 
+        if(type !== 'all'){
+            tempRooms = tempRooms.filter( room => room.type === type);
+        }
+    // filter by capacity
+        if(capacity !== 1 ) {
+            tempRooms = tempRooms.filter(room => room.capacity >= capacity);
+            };
+
+    // filter by price
+        tempRooms = tempRooms.filter(room => room.price <= price)
+
+    
+    //change state
+        this.setState({
+            sortedRooms : tempRooms
+        })
     };
 
 
