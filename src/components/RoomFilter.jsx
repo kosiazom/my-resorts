@@ -14,7 +14,7 @@ const getUnique = (items, value) => {
 
 const RoomFilter = ({rooms}) => {
     const context = useContext(RoomContext)
-    console.log(context) //this returns everything in the state ...a great way to pass down props..context if you dont want to use higher order components then use Context
+    //console.log(context) //this returns everything in the state ...a great way to pass down props..context if you dont want to use higher order components then use Context
     const {
          handleChange,
          type, 
@@ -30,7 +30,7 @@ const RoomFilter = ({rooms}) => {
     
         //get unique types
     let types = getUnique(rooms, 'type');
-    console.log(types)
+    //console.log(types)
     //add all
     types = ['all', ...types];
     //map to jsx

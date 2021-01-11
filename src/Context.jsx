@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import items from './data'
+// import items from './data';
+import Client from './Contentful';
 
+// const contentful = require('contentful')
+
+// const client = contentful.createClient({
+//   space: "c7qplrb7bbfg",
+//   accessToken: 'AuUK7-xahZhzTLp0vggiuYJ7Hu5VgB4OHNnaK54exTc'
+// })
+
+// const response = await client.getEntries()
+// .console.log(response.items)
 
 const RoomContext = React.createContext()
 //The provider is responsible for allowing all the components(which are consumers) in the tree to access it. 
@@ -24,25 +34,38 @@ class RoomProvider extends Component {
        pets: false
     };
     
+    //getData
+    getData = async () => {
+        try {
+            let response = await Client.getEntries({
+                content_type: "beachResortRoom",
+                order: 'sys.createdAt' // order from when it was created
+            });
+            let rooms = this.formatData(response.items)
+            console.log(rooms);
+            let featuredRooms = rooms.filter(room => room.featured === true);
+            let maxPrice = Math.max(...rooms.map(room =>
+                room.price));
+            let maxSize = Math.max(...rooms.map(room =>
+                    room.size));
+                 
+         
+            this.setState({
+                rooms, 
+                sortedRooms: rooms, 
+                featuredRooms, 
+                loading: false,
+                price: maxPrice,
+                maxPrice,
+                maxSize
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
     componentDidMount(){
-        let rooms = this.formatData(items)
-        console.log(rooms);
-        let featuredRooms = rooms.filter(room => room.featured === true);
-        let maxPrice = Math.max(...rooms.map(room =>
-            room.price));
-        let maxSize = Math.max(...rooms.map(room =>
-                room.size));
-             
-     
-        this.setState({
-            rooms, 
-            sortedRooms: rooms, 
-            featuredRooms, 
-            loading: false,
-            price: maxPrice,
-            maxPrice,
-            maxSize
-        })
+       this.getData()
     };
 
     formatData(items){
@@ -60,7 +83,7 @@ class RoomProvider extends Component {
 
     getRoom = (slug) => {
         let tempRooms = [...this.state.rooms]
-        console.log(tempRooms)
+        //console.log(tempRooms)
         const room = tempRooms.find(room => room.slug === slug)
         return room
     };

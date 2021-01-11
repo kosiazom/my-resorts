@@ -43,7 +43,7 @@ class SingleRoom extends Component {
              images
             } = room
         const [mainImg,...defaultImg] = images //destructuring the images here 
-        console.log(defaultImg)
+        //console.log(defaultImg)
        return (
            <>
       <StyledHero img={mainImg|| this.state.defaultBcg}> 

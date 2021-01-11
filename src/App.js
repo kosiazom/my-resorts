@@ -18,7 +18,7 @@ function App() {
     <Route exact path="/" component={Home} />
     <Route exact path="/rooms" component={Rooms} />
     <Route exact path="/rooms/:slug" component={SingleRoom} />
-    <Route component={Errors} />
+    <Route component={ Errors } />
     {/* //when there is no component that exists whats typed it the error page will render instead />  */}
     </Switch> 
 
